@@ -1,0 +1,7 @@
+spring:
+  config:
+    import: optional:config-server:http://localhost:8888
+  application:
+    name: soa-eureka-server
+server:
+  port: 8761

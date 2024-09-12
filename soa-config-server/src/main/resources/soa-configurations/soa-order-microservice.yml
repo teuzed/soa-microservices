@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: soa-order-microservice
+server:
+  port: 8082
