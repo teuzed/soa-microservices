@@ -1,7 +1,13 @@
 spring:
-  config:
-    import: optional:config-server:http://localhost:8888
   application:
     name: soa-order-microservice
+
 server:
   port: 8082
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
