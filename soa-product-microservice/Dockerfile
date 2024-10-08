@@ -5,7 +5,7 @@ WORKDIR /app
 
 ARG JAR_VERSION=latest
 
-COPY soa-user-microservice/target/soa-user-microservice-${JAR_VERSION}.jar app.jar
+COPY soa-product-microservice/target/soa-product-microservice-${JAR_VERSION}.jar app.jar
 
 EXPOSE 8081
 
