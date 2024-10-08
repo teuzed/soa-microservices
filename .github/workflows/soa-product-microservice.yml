@@ -45,6 +45,7 @@ jobs:
         run: |
           VERSION=$(grep 'version:' soa-product-microservice/src/main/resources/application.yml | awk '{print $2}')
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo VERSION
 
       - name: Build Docker Image
         run: |
