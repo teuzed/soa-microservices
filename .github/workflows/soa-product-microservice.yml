@@ -28,9 +28,9 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          cd soa-user-microservice
-          docker build -t teuzed/soa-product-microservice:latest .
+          cd soa-product-microservice
+          docker build -t teuzed/soa-product-microservice:${{ github.sha }} .
 
       - name: Push Docker Image
         run: |
-          docker push teuzed/soa-product-microservice:latest
+          docker push teuzed/soa-product-microservice:${{ github.sha }}
