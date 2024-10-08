@@ -14,6 +14,6 @@ WORKDIR /app
 
 COPY --from=build /app/target/soa-order-microservice.jar order.jar
 
-EXPOSE 8083
+EXPOSE 8082
 
 ENTRYPOINT ["java", "-jar", "order.jar"]

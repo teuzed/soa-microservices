@@ -20,7 +20,7 @@ public class OpenAPIConfig {
                 .servers(List.of(new Server().url("http://localhost:8099")))
                 .info(new Info()
                         .title("Order Detail Service API")
-                        .description("Order Detail Service API Specs")
+                        .description("Order Detail Microservice API Specs")
                         .version("1.0.0"));
     }
 
