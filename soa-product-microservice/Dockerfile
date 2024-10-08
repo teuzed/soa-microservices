@@ -13,7 +13,11 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-product-microservice.jar app.jar
+RUN ls -la
+
+ARG VERSION=latest
+
+COPY --from=build /app/target/soa-product-microservice-${VERSION}.jar app.jar
 
 EXPOSE 8085
 
