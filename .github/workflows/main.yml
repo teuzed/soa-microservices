@@ -1,24 +1,31 @@
 name: Build and Push Docker Images - MICROSERVICES
+
 on:
   push:
     branches:
       - develop
     paths:
       - 'soa-eureka-server/**'
+      - 'soa-gateway-microservice/**'
+      - 'soa-order_detail-server/**'
+      - 'soa-order-microservice/**'
+      - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
       - 'soa-user-microservice/**'
-      - 'soa-gateway-microservice/**'
   pull_request:
     branches:
       - develop
     paths:
-      - 'soa-eureka-server/**'
+      - 'soa-eureka-server/**'  
+      - 'soa-gateway-microservice/**'
+      - 'soa-order_detail-server/**'
+      - 'soa-order-microservice/**'
+      - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
       - 'soa-user-microservice/**'
-      - 'soa-gateway-microservice/**'
       
 jobs:
-  build-eureka:
+  build-eureka-microservice:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -38,7 +45,87 @@ jobs:
           docker push teuzed/soa-eureka-server:latest
           docker push teuzed/soa-eureka-server:${SHORT_SHA}
 
-  build-product:
+  build-gateway-microservice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and Push Gateway Docker Image
+        run: |
+          cd soa-gateway-microservice
+          SHORT_SHA=${GITHUB_SHA::7}
+          docker build -t teuzed/soa-gateway-microservice:latest -t teuzed/soa-gateway-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-gateway-microservice:latest
+          docker push teuzed/soa-gateway-microservice:${SHORT_SHA}
+  build-order_detail-microservice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and Push Gateway Docker Image
+        run: |
+          cd soa-order_detail-microservice
+          SHORT_SHA=${GITHUB_SHA::7}
+          docker build -t teuzed/soa-order_detail-microservice:latest -t teuzed/soa-order_detail-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-order_detail-microservice:latest
+          docker push teuzed/soa-order_detail-microservice:${SHORT_SHA}
+
+  build-order-microservice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and Push Gateway Docker Image
+        run: |
+          cd soa-order-microservice
+          SHORT_SHA=${GITHUB_SHA::7}
+          docker build -t teuzed/soa-order-microservice:latest -t teuzed/soa-order-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-order-microservice:latest
+          docker push teuzed/soa-order-microservice:${SHORT_SHA}          
+
+
+  build-payment-microservice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and Push Gateway Docker Image
+        run: |
+          cd soa-payment-microservice
+          SHORT_SHA=${GITHUB_SHA::7}
+          docker build -t teuzed/soa-payment-microservice:latest -t teuzed/soa-payment-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-payment-microservice:latest
+          docker push teuzed/soa-payment-microservice:${SHORT_SHA}   
+
+  build-product-microservice:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -58,7 +145,7 @@ jobs:
           docker push teuzed/soa-product-microservice:latest
           docker push teuzed/soa-product-microservice:${SHORT_SHA}
 
-  build-user:
+  build-user-microservice:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -77,23 +164,3 @@ jobs:
           docker build -t teuzed/soa-user-microservice:latest -t teuzed/soa-user-microservice:${SHORT_SHA} .
           docker push teuzed/soa-user-microservice:latest
           docker push teuzed/soa-user-microservice:${SHORT_SHA}
-
-  build-gateway:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
-      - name: Build and Push Gateway Docker Image
-        run: |
-          cd soa-gateway-microservice
-          SHORT_SHA=${GITHUB_SHA::7}
-          docker build -t teuzed/soa-gateway-microservice:latest -t teuzed/soa-gateway-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-gateway-microservice:latest
-          docker push teuzed/soa-gateway-microservice:${SHORT_SHA}
