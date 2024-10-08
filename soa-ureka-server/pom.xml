@@ -61,7 +61,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>soa-eureka-microservice</finalName>
+        <finalName>soa-eureka-server</finalName>
     </build>
 
 </project>

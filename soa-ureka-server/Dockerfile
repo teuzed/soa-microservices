@@ -12,7 +12,7 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-eureka-microservice.jar app.jar
+COPY --from=build /app/target/soa-eureka-server.jar app.jar
 
 EXPOSE 8099
 
