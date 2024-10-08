@@ -1,24 +1,12 @@
 
-FROM maven:3.8.5-openjdk-17 AS build
-
-WORKDIR /app
-
-COPY pom.xml .
-COPY src ./src
-
-RUN mvn clean package -DskipTests
-
-
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-RUN ls -la
+ARG JAR_VERSION=latest
 
-ARG VERSION=latest
+COPY soa-user-microservice/target/soa-user-microservice-${JAR_VERSION}.jar app.jar
 
-COPY --from=build /app/target/soa-product-microservice-${VERSION}.jar app.jar
-
-EXPOSE 8085
+EXPOSE 8081
 
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.microservices.product</groupId>
     <artifactId>soa-product-microservice</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>soa-product-microservice</name>
     <description>soa-product-microservice</description>
     <url/>
