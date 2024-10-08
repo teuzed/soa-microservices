@@ -76,7 +76,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>soa-order_detail-server</finalName>
+        <finalName>soa-order_detail-microservice</finalName>
     </build>
 
 </project>
