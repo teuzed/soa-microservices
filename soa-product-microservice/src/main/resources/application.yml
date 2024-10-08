@@ -24,3 +24,6 @@ springdoc:
     enabled: true
     path: /soa-product-microservice/swagger-ui.html
 
+app:
+  version: 1.0.1
+
