@@ -1,4 +1,4 @@
-name: Build and Test soa-user-microservice 
+name: Build and Test soa-product-microservice
 
 on:
   push:
@@ -28,24 +28,22 @@ jobs:
 
       - name: Build with Maven
         run: |
-          cd soa-user-microservice
+          cd soa-product-microservice
           mvn clean package
 
       - name: Run tests
         run: |
-          cd soa-user-microservice
+          cd soa-product-microservice
           mvn test
 
-      - name: Upload JAR as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: soa-product-microservice-jar
-          path: soa-product-microservice/target/*.jar
+      - name: List target directory
+        run: |
+          ls -la soa-product-microservice/target/
 
-      - name: Get version from pom.xml
+      - name: Get version from application.yml
         id: get_version
         run: |
-          VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          VERSION=$(grep 'version:' soa-product-microservice/src/main/resources/application.yml | awk '{print $2}')
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
 
       - name: Build Docker Image
@@ -56,7 +54,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_productNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image
