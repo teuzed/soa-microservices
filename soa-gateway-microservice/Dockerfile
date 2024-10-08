@@ -12,8 +12,8 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-gateway-microservice.jar app.jar
+COPY --from=build /app/target/soa-gateway-microservice.jar gateway.jar
 
 EXPOSE 8099
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "gateway.jar"]
