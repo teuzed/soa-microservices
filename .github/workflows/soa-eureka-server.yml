@@ -5,12 +5,12 @@ on:
     branches:
       - develop
     paths:
-      - 'soa-eureka-microservice/**'
+      - 'soa-eureka-server/**'
   pull_request:
     branches:
       - develop
     paths:
-      - 'soa-eureka-microservice/**'
+      - 'soa-eureka-server/**'
 
 jobs:
   build:
@@ -28,12 +28,12 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          cd soa-eureka-microservice
+          cd soa-eureka-server
           SHORT_SHA=${GITHUB_SHA::7}
-          docker build -t teuzed/soa-eureka-microservice:latest -t teuzed/soa-eureka-microservice:${SHORT_SHA} .
+          docker build -t teuzed/soa-eureka-server:latest -t teuzed/soa-eureka-server:${SHORT_SHA} .
 
       - name: Push Docker Images
         run: |
           SHORT_SHA=${GITHUB_SHA::7}
-          docker push teuzed/soa-eureka-microservice:latest
-          docker push teuzed/soa-eureka-microservice:${SHORT_SHA}
+          docker push teuzed/soa-eureka-server:latest
+          docker push teuzed/soa-eureka-server:${SHORT_SHA}
