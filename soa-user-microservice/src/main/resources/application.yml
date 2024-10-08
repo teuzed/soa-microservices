@@ -1,9 +1,11 @@
+
+
 spring:
   application:
-    name: soa-order-microservice
+    name: soa-user-microservice
 
 server:
-  port: 8082
+  port: 8085
 
 eureka:
   instance:
@@ -12,10 +14,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
 
+
 springdoc:
   api-docs:
     enabled: true
-    path: /soa-order-microservice/v3/api-docs
+    path: /soa-user-microservice/v3/api-docs
   swagger-ui:
     enabled: true
-    path: /soa-order-microservice/swagger-ui.html
+    path: /soa-user-microservice/swagger-ui.html

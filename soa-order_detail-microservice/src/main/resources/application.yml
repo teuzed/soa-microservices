@@ -1,9 +1,9 @@
 spring:
   application:
-    name: soa-order-microservice
+    name: soa-order_detail-microservice
 
 server:
-  port: 8082
+  port: 8084
 
 eureka:
   instance:
@@ -15,7 +15,7 @@ eureka:
 springdoc:
   api-docs:
     enabled: true
-    path: /soa-order-microservice/v3/api-docs
+    path: /soa-order_detail-microservice/v3/api-docs
   swagger-ui:
     enabled: true
-    path: /soa-order-microservice/swagger-ui.html
+    path: /soa-order_detail-microservice/swagger-ui.html
