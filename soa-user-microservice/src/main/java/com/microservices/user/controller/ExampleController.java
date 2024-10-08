@@ -14,6 +14,6 @@ public class ExampleController {
     @GetMapping("/example")
     public List<String> getExample() {
 
-        return List.of("Hello", "from", "User", "Service");
+        return List.of("Hello", "from", "User", "Microservice");
     }
 }
