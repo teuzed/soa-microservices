@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  eureka-server:
+    image: teuzed/soa-eureka-server:latest
+    ports:
+      - "8761:8761"
+    networks:
+      - soa-network
+
+  gateway:
+    image: teuzed/soa-gateway-microservice:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - soa-network
+
+  order-service:
+    image: teuzed/soa-order-microservice:latest
+    ports:
+      - "8081:8081"
+    networks:
+      - soa-network
+
+  order-detail-service:
+    image: teuzed/soa-order_detail-microservice:latest
+    ports:
+      - "8082:8082"
+    networks:
+      - soa-network
+
+  payment-service:
+    image: teuzed/soa-payment-microservice:latest
+    ports:
+      - "8083:8083"
+    networks:
+      - soa-network
+
+  product-service:
+    image: teuzed/soa-product-microservice:latest
+    ports:
+      - "8084:8084"
+    networks:
+      - soa-network
+
+  user-service:
+    image: teuzed/soa-user-microservice:latest
+    ports:
+      - "8085:8085"
+    networks:
+      - soa-network
+
+networks:
+  soa-network:
+    driver: bridge
