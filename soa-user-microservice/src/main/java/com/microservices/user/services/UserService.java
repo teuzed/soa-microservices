@@ -2,6 +2,8 @@ package com.microservices.user.services;
 
 import com.microservices.user.models.User;
 
+import java.util.List;
+
 public interface UserService {
 
     User save(User user);
@@ -9,6 +11,8 @@ public interface UserService {
     public User findById(Long id);
 
     public void deleteById(Long id);
+
+    List<User> findAll();
 
 
 }

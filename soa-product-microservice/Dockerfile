@@ -13,8 +13,8 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-product-microservice.jar app.jar
+COPY --from=build /app/target/soa-product-microservice.jar soa-product-microservice.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "soa-product-microservice.jar"]

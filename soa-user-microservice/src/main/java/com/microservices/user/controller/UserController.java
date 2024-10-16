@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/user/")
 public class UserController {
 
-
     @Autowired
     private UserServiceImpl userService;
 
@@ -19,12 +18,12 @@ public class UserController {
         return userService.save(user);
     }
 
-    @GetMapping("find/{id}")
+    @GetMapping("/find/{id}")
     public User findById(@PathVariable Long id){
         return userService.findById(id);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id){
         userService.deleteById(id);
     }

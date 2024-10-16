@@ -13,6 +13,11 @@ spring:
           uri: lb:http://SOA-USER-MICROSERVICE
           predicates:
             - Path=/api/v1/user/**
+        - id: soa-product-microservice
+          uri: lb:http://SOA-PRODUCT-MICROSERVICE
+          predicates:
+            - Path=/api/v1/product/**
+
   application:
     name: soa-gateway-microservice
 
