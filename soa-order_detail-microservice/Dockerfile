@@ -7,13 +7,12 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-order_detail-microservice.jar app.jar
+COPY --from=build /app/target/soa-order_detail-microservice.jar soa-order_detail-microservice.jar
 
 EXPOSE 8084
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "soa-order_detail-microservice.jar"]
