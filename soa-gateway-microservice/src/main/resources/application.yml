@@ -17,6 +17,10 @@ spring:
           uri: lb:http://SOA-PRODUCT-MICROSERVICE
           predicates:
             - Path=/api/v1/product/**
+        - id: soa-payment-microservice
+          uri: lb:http://SOA-PAYMENT-MICROSERVICE
+          predicates:
+            - Path=/api/v1/payment/**
 
   application:
     name: soa-gateway-microservice
