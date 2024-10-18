@@ -1,19 +1,6 @@
-services:
-  db-soa:
-    image: mysql:8.0.33-oraclelinux8
-    container_name: mysql_container
-    environment:
-      MYSQL_ROOT_PASSWORD: U20243502
-      MYSQL_DATABASE: db_soa_product_microservice
-      MYSQL_USER: root
-      MYSQL_PASSWORD: U20243502
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - soa-network
+version: "3.8"
 
+services:
   soa-eureka-server:
     image: teuzed/soa-eureka-server:latest
     container_name: soa-eureka-server
@@ -22,7 +9,12 @@ services:
     networks:
       - soa-network
     environment:
-      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 
   soa-gateway-microservice:
     image: teuzed/soa-gateway-microservice:latest
@@ -49,9 +41,6 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-soa:3306/db_soa_product_microservice?useSSL=false
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=U20243502
 
 #  soa-order-microservice:
 #    image: teuzed/soa-order-microservice:latest
@@ -108,3 +97,6 @@ services:
 networks:
   soa-network:
     driver: bridge
+
+volumes:
+  mysql_data:

@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/db_soa_product_microservice?useSSL=false}
-    username: ${SPRING_DATASOURCE_USERNAME:root}
-    password: ${SPRING_DATASOURCE_PASSWORD:U20243052}
+    url: jdbc:mysql://railway_root:XYVXcVtpUFqeCWNAZkTKmJoGkpFTtzbj@junction.proxy.rlwy.net:29885/railway
+    username: railway_root
+    password: XYVXcVtpUFqeCWNAZkTKmJoGkpFTtzbj
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
