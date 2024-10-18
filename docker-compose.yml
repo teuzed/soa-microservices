@@ -1,4 +1,3 @@
-version: "3.8"
 
 services:
   soa-eureka-server:
@@ -100,3 +99,4 @@ networks:
 
 volumes:
   mysql_data:
+  .m2:
