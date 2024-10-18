@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/db_soa_user_microservice?useSSL=false
+    url: jdbc:mysql://localhost:3306/db_soa_order_detail_microservice?useSSL=false
     username: root
     password: U20243052
     driver-class-name: com.mysql.cj.jdbc.Driver
