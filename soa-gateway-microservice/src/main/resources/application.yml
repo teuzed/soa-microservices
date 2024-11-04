@@ -4,30 +4,17 @@ spring:
       discovery:
         locator:
           enabled: true
-      routes:
-        - id: soa-order-microservice
-          uri: lb:http://SOA-ORDER-MICROSERVICE
-          predicates:
-            - Path=/api/v1/order/**
-        - id: soa-user-microservice
-          uri: lb:http://SOA-USER-MICROSERVICE
-          predicates:
-            - Path=/api/v1/user/**
-        - id: soa-product-microservice
-          uri: lb:http://SOA-PRODUCT-MICROSERVICE
-          predicates:
-            - Path=/api/v1/product/**
-        - id: soa-payment-microservice
-          uri: lb:http://SOA-PAYMENT-MICROSERVICE
-          predicates:
-            - Path=/api/v1/payment/**
-        - id: soa-order_detail-microservice
-          uri: lb:http://SOA-ORDER_DETAIL-MICROSERVICE
-          predicates:
-            - Path=/api/v1/order_detail/**
 
   application:
     name: soa-gateway-microservice
 
 server:
   port: 8099
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

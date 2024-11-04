@@ -40,4 +40,10 @@ public class UserController {
         return userService.save(user1);
     }
 
+
+    @GetMapping("/getUserByEmail/{email}")
+    public User getUserByEmail(@PathVariable String email){
+        return userService.findByEmail(email);
+    }
+
 }

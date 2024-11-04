@@ -16,6 +16,6 @@ public interface UserServiceClient {
     @PostMapping("/save")
     ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest request);
 
-    @GetMapping("/getUserByUsername/{username}")
-    ResponseEntity<UserDto> getUserByUsername(@PathVariable String username);
+    @GetMapping("/getUserByEmail/{email}")
+    ResponseEntity<UserDto> getUserByUsername(@PathVariable String email);
 }
