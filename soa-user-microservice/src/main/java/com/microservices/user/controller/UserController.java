@@ -33,7 +33,6 @@ public class UserController {
 
         User user1 = userService.findById(user.getId_user());
         user1.setName(user.getName());
-        user1.setLastname(user.getLastname());
         user1.setEmail(user.getEmail());
         user1.setPassword(user.getPassword());
 

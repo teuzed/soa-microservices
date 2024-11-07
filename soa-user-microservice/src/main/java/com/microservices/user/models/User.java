@@ -11,7 +11,6 @@ public class User {
     private Long id_user;
     private String name;
 
-    private String lastname;
     private String email;
     private String password;
 
@@ -33,13 +32,9 @@ public class User {
         this.id_user = id_user;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+
+
 
     public String getName() {
         return name;
@@ -70,7 +65,6 @@ public class User {
         return "User{" +
                 "id_user=" + id_user +
                 ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

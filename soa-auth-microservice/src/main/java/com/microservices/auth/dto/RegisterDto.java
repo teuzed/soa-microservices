@@ -8,7 +8,6 @@ import lombok.Data;
 @Builder
 public class RegisterDto {
     private String name;
-    private String lastname;
     private String email;
     private String password;
 }
