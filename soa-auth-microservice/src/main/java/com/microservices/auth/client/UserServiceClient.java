@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface UserServiceClient {
 
     @PostMapping("/save")
-    ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest request);
+    ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest registerRequest);
 
     @GetMapping("/getUserByEmail/{email}")
     ResponseEntity<UserDto> getUserByUsername(@PathVariable String email);

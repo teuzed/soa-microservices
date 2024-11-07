@@ -1,7 +1,9 @@
 package com.microservices.auth.controllers;
 
+import com.microservices.auth.dto.RegisterDto;
 import com.microservices.auth.dto.TokenDto;
 import com.microservices.auth.request.LoginRequest;
+import com.microservices.auth.request.RegisterRequest;
 import com.microservices.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthController {
 
-
     private final AuthService authService;
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.save(request));
     }
 }

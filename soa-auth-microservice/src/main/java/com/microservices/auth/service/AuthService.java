@@ -31,7 +31,7 @@ public class AuthService {
     }
 
 
-    public RegisterDto register(RegisterRequest request) {
+    public RegisterDto save(RegisterRequest request) {
         return userServiceClient.save(request).getBody();
     }
 
