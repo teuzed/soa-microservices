@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/v1/auth/")
 @RequiredArgsConstructor
 public class AuthController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
     private final AuthService authService;
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginRequest request) {
@@ -26,6 +29,7 @@ public class AuthController {
 
     @PostMapping("/save")
     public ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest request) {
+        logger.info("Registering user: {}", request.getEmail());
         return ResponseEntity.ok(authService.save(request));
     }
 }
