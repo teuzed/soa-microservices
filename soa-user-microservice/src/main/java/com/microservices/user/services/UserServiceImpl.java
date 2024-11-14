@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
     public User save(User user) {
         User toSave = User.builder()
                 .name(user.getName())
-                .email(user.getEmail())
+                .username(user.getUsername())
                 .password(passwordEncoder.encode(user.getPassword()))
                 .build();
         return repository.save(toSave);
@@ -52,7 +52,8 @@ public class UserServiceImpl implements UserService{
 
 
     @Override
-    public User findByEmail(String email) {
-        return repository.findByEmail(email);
+    public User findByUsername(String username) {
+        return repository.findByUsername(username);
     }
+
 }

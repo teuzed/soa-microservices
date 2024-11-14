@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,7 +24,6 @@ public class CustomUserDetails implements UserDetails {
             return Collections.emptyList();
         }
         return Stream.of(user.getRole())
-                .filter(x -> x != null)
                 .map(x -> new SimpleGrantedAuthority("ROLE_" + x.name()))
                 .collect(Collectors.toList());
     }

@@ -24,13 +24,13 @@ public class AuthController {
     private final AuthService authService;
     @PostMapping("/login")
     public ResponseEntity<TokenDto> login(@RequestBody LoginRequest request) {
-        logger.info("Logging in user: {}", request.getEmail());
+        logger.info("Logging in user: {}", request.getUsername());
         return ResponseEntity.ok(authService.login(request));
     }
 
     @PostMapping("/save")
     public ResponseEntity<RegisterDto> save(@RequestBody RegisterRequest request) {
-        logger.info("Registering user: {}", request.getEmail());
+        logger.info("Registering user: {}", request.getUsername());
         return ResponseEntity.ok(authService.save(request));
     }
 }
