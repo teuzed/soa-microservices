@@ -7,17 +7,23 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
-public class CustomUserDetails  implements UserDetails {
+public class CustomUserDetails implements UserDetails {
 
     private final UserDto user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (user.getRole() == null) {
+
+            return Collections.emptyList();
+        }
         return Stream.of(user.getRole())
+                .filter(x -> x != null)
                 .map(x -> new SimpleGrantedAuthority("ROLE_" + x.name()))
                 .collect(Collectors.toList());
     }

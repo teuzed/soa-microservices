@@ -21,11 +21,11 @@ public class AuthService {
     private final JwtService jwtService;
 
     public TokenDto login(LoginRequest request) {
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         if (authenticate.isAuthenticated())
             return TokenDto
                     .builder()
-                    .token(jwtService.generateToken(request.getUsername()))
+                    .token(jwtService.generateToken(request.getEmail()))
                     .build();
         else throw new WrongCredentialsException("Wrong credentials");
     }

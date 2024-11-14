@@ -10,17 +10,17 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Jwts;
 
 import javax.crypto.SecretKey;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
 
 @Component
 @RequiredArgsConstructor
 public class JwtService {
 
     private final CustomUserDetailsService customUserDetailsService;
+
+
     public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
     public String generateToken(String username) {
@@ -34,14 +34,12 @@ public class JwtService {
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256).compact();
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
     private SecretKey getSignInKey() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET));
     }
-
-
-
 }
