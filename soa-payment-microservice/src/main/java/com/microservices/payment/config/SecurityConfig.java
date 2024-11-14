@@ -1,8 +1,8 @@
-package com.microservices.product.config;
+package com.microservices.payment.config;
 
 
 
-import com.microservices.product.jwt.JwtAuthenticationFilter;
+import com.microservices.payment.jwt.JwtAuthenticationFilter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +38,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().requestMatchers(
-                "/soa-product-microservice/swagger-ui.html");
+                "/soa-payment-microservice/swagger-ui.html");
     }
 
     @Bean
