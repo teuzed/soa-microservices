@@ -38,5 +38,8 @@ public class OrderController {
         orderService.deleteOrder(id);
     }
 
-
+    @GetMapping("/example")
+    public String example(){
+        return "Hello World";
+    }
 }

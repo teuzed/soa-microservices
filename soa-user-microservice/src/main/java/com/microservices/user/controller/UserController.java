@@ -2,13 +2,16 @@ package com.microservices.user.controller;
 
 import com.microservices.user.models.User;
 import com.microservices.user.services.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user/")
+@RequestMapping("/api/v1/user")
 public class UserController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserServiceImpl userService;
 
@@ -33,11 +36,23 @@ public class UserController {
 
         User user1 = userService.findById(user.getId_user());
         user1.setName(user.getName());
-        user1.setLastname(user.getLastname());
-        user1.setEmail(user.getEmail());
+        user1.setUsername(user.getUsername());
         user1.setPassword(user.getPassword());
-
         return userService.save(user1);
+    }
+
+
+    @GetMapping("/getUserByUsername/{username}")
+    public User getUserByUsername(@PathVariable String username){
+        logger.info("Getting user by username: {}", username);
+        return userService.findByUsername(username);
+    }
+
+
+
+    @GetMapping("/example")
+    public String example(){
+        return "Hello world";
     }
 
 }
