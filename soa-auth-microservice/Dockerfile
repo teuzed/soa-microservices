@@ -14,6 +14,6 @@ WORKDIR /app
 
 COPY --from=build /app/target/soa-auth-microservice.jar soa-auth-microservice.jar
 
-EXPOSE 8085
+EXPOSE 8086
 
 ENTRYPOINT ["java", "-jar", "soa-auth-microservice.jar"]
