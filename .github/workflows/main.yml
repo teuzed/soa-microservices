@@ -12,6 +12,7 @@ on:
       - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
       - 'soa-user-microservice/**'
+      - 'soa-auth-microservice/**'
   pull_request:
     branches:
       - develop
@@ -23,6 +24,7 @@ on:
       - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
       - 'soa-user-microservice/**'
+      - 'soa-auth-microservice/**'      
       
 jobs:
   build-eureka-microservice:
@@ -164,3 +166,23 @@ jobs:
           docker build -t teuzed/soa-user-microservice:latest -t teuzed/soa-user-microservice:${SHORT_SHA} .
           docker push teuzed/soa-user-microservice:latest
           docker push teuzed/soa-user-microservice:${SHORT_SHA}
+          
+  build-auth-microservice:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+      - name: Build and Push Eureka Docker Image
+        run: |
+          cd soa-auth-microservice
+          SHORT_SHA=${GITHUB_SHA::7}
+          docker build -t teuzed/soa-auth-microservice:latest -t teuzed/soa-auth-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-auth-microservice:latest
+          docker push teuzed/soa-auth-microservice:${SHORT_SHA}
