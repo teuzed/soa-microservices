@@ -1,7 +1,7 @@
 package com.microservices.order.config;
 
 
-import com.microservices.payment.client.CustomErrorDecoder;
+import com.microservices.order.client.CustomErrorDecoder;
 import feign.codec.ErrorDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

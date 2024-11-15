@@ -54,5 +54,4 @@ public class UserController {
     public String example(){
         return "Hello world";
     }
-
 }
