@@ -37,4 +37,8 @@ public class ProductController {
         productService.deleteById(id);
     }
 
+    @GetMapping("/example")
+    public String example(){
+        return "Hello World in product-service";
+    }
 }

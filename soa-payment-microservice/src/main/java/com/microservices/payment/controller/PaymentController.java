@@ -36,5 +36,9 @@ public class PaymentController {
     }
 
 
+    @GetMapping("/example")
+    public String example(){
+        return "Payment Microservice is working";
+    }
 
 }

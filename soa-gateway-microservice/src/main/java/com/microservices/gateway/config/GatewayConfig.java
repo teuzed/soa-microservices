@@ -36,15 +36,13 @@ public class GatewayConfig {
                         .filters(f -> f.filter(filter))
                         .uri("lb:http://soa-payment-microservice"))
 
-
-                .route("soa-order_detail-microservice", r -> r.path("/api/v1/order_detail/**")
-                        .filters(f -> f.filter(filter))
-                        .uri("lb:http://soa-order_detail-microservice"))
-
                 .route("soa-auth-microservice", r -> r.path("/api/v1/auth/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb:http://soa-auth-microservice"))
 
+                .route("soa-order-detail-microservice", r -> r.path("/api/v1/order-detail/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("lb:http://soa-order-detail-microservice"))
                 .build();
     }
 }

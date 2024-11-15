@@ -2,7 +2,6 @@ package com.microservices.order.controller;
 
 import com.microservices.order.models.Order;
 import com.microservices.order.services.OrderServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +39,6 @@ public class OrderController {
 
     @GetMapping("/example")
     public String example(){
-        return "Hello World";
+        return "Hello World in Order Microservice";
     }
 }
