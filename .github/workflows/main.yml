@@ -7,7 +7,7 @@ on:
     paths:
       - 'soa-eureka-server/**'
       - 'soa-gateway-microservice/**'
-      - 'soa-order_detail-microservice/**'
+      - 'soa-order-detail-microservice/**'
       - 'soa-order-microservice/**'
       - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
@@ -19,7 +19,7 @@ on:
     paths:
       - 'soa-eureka-server/**'  
       - 'soa-gateway-microservice/**'
-      - 'soa-order_detail-microservice/**'
+      - 'soa-order-detail-microservice/**'
       - 'soa-order-microservice/**'
       - 'soa-payment-microservice/**'
       - 'soa-product-microservice/**'
@@ -66,7 +66,7 @@ jobs:
           docker build -t teuzed/soa-gateway-microservice:latest -t teuzed/soa-gateway-microservice:${SHORT_SHA} .
           docker push teuzed/soa-gateway-microservice:latest
           docker push teuzed/soa-gateway-microservice:${SHORT_SHA}
-  build-order_detail-microservice:
+  build-order-detail-microservice:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -82,9 +82,9 @@ jobs:
         run: |
           cd soa-order_detail-microservice
           SHORT_SHA=${GITHUB_SHA::7}
-          docker build -t teuzed/soa-order_detail-microservice:latest -t teuzed/soa-order_detail-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-order_detail-microservice:latest
-          docker push teuzed/soa-order_detail-microservice:${SHORT_SHA}
+          docker build -t teuzed/soa-order-detail-microservice:latest -t teuzed/soa-order_detail-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-order-detail-microservice:latest
+          docker push teuzed/soa-order-detail-microservice:${SHORT_SHA}
 
   build-order-microservice:
     runs-on: ubuntu-latest
