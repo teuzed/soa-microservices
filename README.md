@@ -1,8 +1,5 @@
 
-```
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/<KEY_NAME>
-```
+
 # Deployment Guide for SOA Microservices
 
 This guide provides step-by-step instructions to deploy and execute the SOA microservices developed in Java using Spring Boot.
@@ -105,4 +102,3 @@ Deploy the core services that handle business logic.
 - Ensure the API Gateway routes requests to the appropriate services.
 
 ---
-
