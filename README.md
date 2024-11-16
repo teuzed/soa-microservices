@@ -101,4 +101,12 @@ Deploy the core services that handle business logic.
 - Verify that all services have registered with the Eureka server by accessing the Eureka dashboard (usually at `http://localhost:8761`).
 - Ensure the API Gateway routes requests to the appropriate services.
 
+
+Excute Microservices 
+
+```
+
+git clone https://github.com/teuzed/soa-microservices.git
+cd soa-microservices
+docker-compose up -d 
 ---
