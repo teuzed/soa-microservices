@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests --no-transfer-progress
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/soa-order-microservice.jar /app/soa-order-microservice.jar
+COPY --from=build /app/target/soa-order-microservice.jar soa-order-microservice.jar
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "/app/soa-order-microservice.jar"]
+ENTRYPOINT ["java", "-jar", "soa-order-microservice.jar"]
