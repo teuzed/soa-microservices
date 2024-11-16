@@ -44,8 +44,9 @@ jobs:
           cd soa-eureka-server
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-eureka-server:latest -t teuzed/soa-eureka-server:${SHORT_SHA} .
-          docker push teuzed/soa-eureka-server:latest
           docker push teuzed/soa-eureka-server:${SHORT_SHA}
+          docker push teuzed/soa-eureka-server:latest
+          
 
   build-gateway-microservice:
     runs-on: ubuntu-latest
