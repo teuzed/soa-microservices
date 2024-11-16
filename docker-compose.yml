@@ -32,6 +32,9 @@ services:
     environment:
       - SERVICE_SOA=soa-user-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
 
   soa-auth-microservice:
     image: teuzed/soa-auth-microservice:latest
@@ -43,7 +46,9 @@ services:
     environment:
       - SERVICE_SOA=soa-auth-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka    
-
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
   soa-product-microservice:
     image: teuzed/soa-product-microservice:latest
     container_name: soa-product-microservice
@@ -54,7 +59,10 @@ services:
     environment:
       - SERVICE_SOA=soa-product-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka    
-        
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+
   soa-payment-microservice:
     image: teuzed/soa-payment-microservice:latest
     container_name: soa-payment-microservice
@@ -65,6 +73,9 @@ services:
     environment:
       - SERVICE_SOA=soa-payment-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
 
   soa-order-detail-microservice:
     image: teuzed/soa-order-detail-microservice:latest
@@ -76,6 +87,9 @@ services:
     environment:
       - SERVICE_SOA=soa-order-detail-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
 
   soa-order-microservice:
     image: teuzed/soa-order-microservice:latest
@@ -87,7 +101,9 @@ services:
     environment:
       - SERVICE_SOA=soa-order-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
-
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
+      - SPRING_DATASOURCE_USERNAME=soa-database_owner
+      - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
 
 networks:
   soa-network:
