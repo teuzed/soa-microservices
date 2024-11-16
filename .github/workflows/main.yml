@@ -65,8 +65,9 @@ jobs:
           cd soa-gateway-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-gateway-microservice:latest -t teuzed/soa-gateway-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-gateway-microservice:latest
           docker push teuzed/soa-gateway-microservice:${SHORT_SHA}
+          docker push teuzed/soa-gateway-microservice:latest
+
   build-order-detail-microservice:
     runs-on: ubuntu-latest
     steps:
@@ -84,8 +85,9 @@ jobs:
           cd soa-order_detail-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-order-detail-microservice:latest -t teuzed/soa-order-detail-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-order-detail-microservice:latest
           docker push teuzed/soa-order-detail-microservice:${SHORT_SHA}
+          docker push teuzed/soa-order-detail-microservice:latest
+
 
   build-order-microservice:
     runs-on: ubuntu-latest
@@ -104,8 +106,9 @@ jobs:
           cd soa-order-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-order-microservice:latest -t teuzed/soa-order-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-order-microservice:${SHORT_SHA}   
           docker push teuzed/soa-order-microservice:latest
-          docker push teuzed/soa-order-microservice:${SHORT_SHA}          
+       
 
 
   build-payment-microservice:
@@ -125,8 +128,9 @@ jobs:
           cd soa-payment-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-payment-microservice:latest -t teuzed/soa-payment-microservice:${SHORT_SHA} .
+          docker push teuzed/soa-payment-microservice:${SHORT_SHA} 
           docker push teuzed/soa-payment-microservice:latest
-          docker push teuzed/soa-payment-microservice:${SHORT_SHA}   
+  
 
   build-product-microservice:
     runs-on: ubuntu-latest
@@ -145,8 +149,9 @@ jobs:
           cd soa-product-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-product-microservice:latest -t teuzed/soa-product-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-product-microservice:latest
           docker push teuzed/soa-product-microservice:${SHORT_SHA}
+          docker push teuzed/soa-product-microservice:latest
+
 
   build-user-microservice:
     runs-on: ubuntu-latest
@@ -165,8 +170,9 @@ jobs:
           cd soa-user-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-user-microservice:latest -t teuzed/soa-user-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-user-microservice:latest
           docker push teuzed/soa-user-microservice:${SHORT_SHA}
+          docker push teuzed/soa-user-microservice:latest
+  
           
   build-auth-microservice:
     runs-on: ubuntu-latest
@@ -185,5 +191,6 @@ jobs:
           cd soa-auth-microservice
           SHORT_SHA=${GITHUB_SHA::7}
           docker build -t teuzed/soa-auth-microservice:latest -t teuzed/soa-auth-microservice:${SHORT_SHA} .
-          docker push teuzed/soa-auth-microservice:latest
           docker push teuzed/soa-auth-microservice:${SHORT_SHA}
+          docker push teuzed/soa-auth-microservice:latest
+
