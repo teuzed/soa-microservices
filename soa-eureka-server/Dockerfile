@@ -16,4 +16,6 @@ COPY --from=build /app/target/soa-eureka-server.jar soa-eureka-server.jar
 
 EXPOSE 8761
 
-ENTRYPOINT ["java", "-jar", "soa-eureka-server.jar.jar"]
+
+ENTRYPOINT ["java", "-jar", "soa-eureka-server.jar"]
+
