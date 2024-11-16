@@ -18,9 +18,14 @@ services:
       - "8099:8099"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server  
     environment:
       - SERVICE_SOA=soa-gateway-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true     
 
   soa-user-microservice:
     image: teuzed/soa-user-microservice:latest
@@ -29,13 +34,18 @@ services:
       - "8085:8085"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server        
     environment:
       - SERVICE_SOA=soa-user-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
-
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      
   soa-auth-microservice:
     image: teuzed/soa-auth-microservice:latest
     container_name: soa-auth-microservice
@@ -43,12 +53,18 @@ services:
       - "8086:8086"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server  
     environment:
       - SERVICE_SOA=soa-auth-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka    
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+
   soa-product-microservice:
     image: teuzed/soa-product-microservice:latest
     container_name: soa-product-microservice
@@ -56,12 +72,17 @@ services:
       - "8081:8081"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server     
     environment:
       - SERVICE_SOA=soa-product-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka    
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
 
   soa-payment-microservice:
     image: teuzed/soa-payment-microservice:latest
@@ -70,12 +91,18 @@ services:
       - "8083:8083"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server        
     environment:
       - SERVICE_SOA=soa-payment-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
+
 
   soa-order-detail-microservice:
     image: teuzed/soa-order-detail-microservice:latest
@@ -84,12 +111,17 @@ services:
       - "8084:8084"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server        
     environment:
       - SERVICE_SOA=soa-order-detail-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
 
   soa-order-microservice:
     image: teuzed/soa-order-microservice:latest
@@ -98,12 +130,17 @@ services:
       - "8082:8082"
     networks:
       - soa-network
+    depends_on:
+      - soa-eureka-server        
     environment:
       - SERVICE_SOA=soa-order-microservice
       - EUREKA_SERVER=http://soa-eureka-server:8761/eureka
       - SPRING_DATASOURCE_URL=jdbc:postgresql://ep-cool-sky-a5jqq0tn.us-east-2.aws.neon.tech/soa-database?sslmode=require
       - SPRING_DATASOURCE_USERNAME=soa-database_owner
       - SPRING_DATASOURCE_PASSWORD=h7rgP1DuSCRc
+      - EUREKA_SERVER_PORT=8761
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
+      - EUREKA_INSTANCE_PREFERIPADDRESS=true
 
 networks:
   soa-network:
