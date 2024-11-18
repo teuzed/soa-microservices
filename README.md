@@ -103,10 +103,58 @@ Deploy the core services that handle business logic.
 
 
 Excute Microservices 
-
 ```
-
 git clone https://github.com/teuzed/soa-microservices.git
 cd soa-microservices
 docker-compose up -d 
----
+```
+
+
+
+
+## **Endpoints de la API**
+
+### **1. Registro de Usuario**
+
+#### Endpoint:
+**POST** `http://localhost:8099/api/v1/auth/save`
+
+#### Body:
+```json
+{
+  "name": "Ryan Wantuil Pacheco S",
+  "username": "gpacheco@utp.edu.com",
+  "password": "ryan"
+}
+```
+
+
+### **2. Login Usuarios**
+
+#### Endpoint:
+**POST** `http://localhost:8099/api/v1/auth/login`
+
+#### Body:
+```json
+{
+  "username": "gpacheco@utp.edu.com",
+  "password": "ryan"
+}
+```
+###Respuesta esperada
+
+```
+{
+   "token":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXX"
+}
+```
+### **3. Solicitud Autenticada**
+
+GET http://host.docker.internal:8099/api/v1/user/example
+
+Headers:
+Authorization: Bearer <token>
+
+
+
+
