@@ -150,7 +150,7 @@ docker-compose up -d
 ```
 ### **3. Solicitud Autenticada**
 
-GET http://host.docker.internal:8099/api/v1/user/example
+GET http://localhost:8099/api/v1/user/example
 
 Headers:
 Authorization: Bearer <token>
