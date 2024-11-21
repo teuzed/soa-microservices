@@ -37,8 +37,18 @@ public class ProductController {
         productService.deleteById(id);
     }
 
-    @GetMapping("/example")
-    public String example(){
-        return "Hello World in product-service";
+
+    @PutMapping("/update/{id}")
+    public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        Product existingProduct = productService.findById(id);
+        if (existingProduct != null) {
+            existingProduct.setName(updatedProduct.getName());
+            existingProduct.setPrice(updatedProduct.getPrice());
+            existingProduct.setStock(updatedProduct.getStock());
+            return productService.save(existingProduct);
+        } else {
+            throw new RuntimeException("Producto no encontrado con ID: " + id);
+        }
     }
+    
 }
