@@ -50,5 +50,5 @@ public class ProductController {
             throw new RuntimeException("Producto no encontrado con ID: " + id);
         }
     }
-    
+
 }
