@@ -101,4 +101,60 @@ Deploy the core services that handle business logic.
 - Verify that all services have registered with the Eureka server by accessing the Eureka dashboard (usually at `http://localhost:8761`).
 - Ensure the API Gateway routes requests to the appropriate services.
 
----
+
+Excute Microservices 
+```
+git clone https://github.com/teuzed/soa-microservices.git
+cd soa-microservices
+docker-compose up -d 
+```
+
+
+
+
+## **Endpoints de la API**
+
+### **1. Registro de Usuario**
+
+#### Endpoint:
+**POST** `http://localhost:8099/api/v1/auth/save`
+
+#### Body:
+```json
+{
+  "name": "Ryan Wantuil Pacheco S",
+  "username": "gpacheco@utp.edu.com",
+  "password": "ryan"
+}
+```
+
+
+### **2. Login Usuarios**
+
+#### Endpoint:
+**POST** `http://localhost:8099/api/v1/auth/login`
+
+#### Body:
+```json
+{
+  "username": "gpacheco@utp.edu.com",
+  "password": "ryan"
+}
+```
+###Respuesta esperada
+
+```
+{
+   "token":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXX"
+}
+```
+### **3. Solicitud Autenticada**
+
+GET http://localhost:8099/api/v1/user/example
+
+Headers:
+Authorization: Bearer <token>
+
+
+
+

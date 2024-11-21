@@ -12,10 +12,10 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY --from=build /app/target/soa-eureka-server.jar soa-eureka-server.jar
+COPY --from=build /app/target/soa-eureka-server.jar app-server.jar
 
 EXPOSE 8761
 
 
-ENTRYPOINT ["java", "-jar", "soa-eureka-server.jar"]
+ENTRYPOINT ["java", "-jar", "app-server.jar"]
 
