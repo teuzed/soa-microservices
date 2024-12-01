@@ -1,6 +1,10 @@
 spring:
   cloud:
     gateway:
+      filters:
+        - name: AddRequestHeader=Access-Control-Allow-Origin, http://localhost:4200
+        - name: AddRequestHeader=Access-Control-Allow-Methods, GET, POST, PUT, DELETE, OPTIONS
+        - name: AddRequestHeader=Access-Control-Allow-Headers, Authorization, Content-Type
       globalcors:
         cors-configurations:
           '[/**]':
