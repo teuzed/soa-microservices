@@ -1,9 +1,24 @@
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+
 
   application:
     name: soa-gateway-microservice
@@ -18,3 +33,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
