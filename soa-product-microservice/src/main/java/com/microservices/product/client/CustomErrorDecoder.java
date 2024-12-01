@@ -18,19 +18,21 @@ public class CustomErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
         try (InputStream body = response.body().asInputStream()) {
-            Map<String, String> errors =
-                    mapper.readValue(IOUtils.toString(body, StandardCharsets.UTF_8), Map.class);
-            return GenericErrorResponse
-                    .builder()
-                    .httpStatus(HttpStatus.valueOf(response.status()))
-                    .message(errors.get("error"))
-                    .build();
+
+            String responseBody = IOUtils.toString(body, StandardCharsets.UTF_8);
+            Map<String, String> errors = mapper.readValue(responseBody, Map.class);
+
+            return new GenericErrorResponse(
+                    errors.get("error") != null ? errors.get("error") : "Unknown error",
+                    HttpStatus.valueOf(response.status())
+            );
 
         } catch (IOException exception) {
-            throw GenericErrorResponse.builder()
-                    .httpStatus(HttpStatus.valueOf(response.status()))
-                    .message(exception.getMessage())
-                    .build();
+
+            return new GenericErrorResponse(
+                    exception.getMessage() != null ? exception.getMessage() : "Error reading response body",
+                    HttpStatus.valueOf(response.status())
+            );
         }
     }
 }

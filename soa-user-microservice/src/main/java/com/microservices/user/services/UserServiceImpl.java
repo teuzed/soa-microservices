@@ -3,7 +3,10 @@ package com.microservices.user.services;
 import com.microservices.user.models.User;
 import com.microservices.user.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
@@ -12,6 +15,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
 
     private final PasswordEncoder passwordEncoder;
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository repository;
@@ -54,6 +58,18 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findByUsername(String username) {
         return repository.findByUsername(username);
+    }
+
+    private boolean userExists(String username) {
+        try {
+            User user = findByUsername(username);
+            boolean exists = user != null;
+            logger.info("User existence check for {}: {}", username, exists);
+            return exists;
+        } catch (Exception e) {
+            logger.error("Error during user existence check for {}: {}", username, e.getMessage());
+            return false; // Default to false if an error occurs
+        }
     }
 
 }

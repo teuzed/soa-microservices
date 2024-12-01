@@ -1,6 +1,6 @@
 spring:
   application:
-    name: soa-auth-
+    name: soa-auth-microservice
   web:
     cors:
       allowed-origins: "http://localhost:4200"

@@ -48,6 +48,16 @@ public class UserController {
         return userService.findByUsername(username);
     }
 
+    @PostMapping("/login")
+    public User login(@RequestBody User user){
+        User user1 = userService.findByUsername(user.getUsername());
+        if(user1 != null){
+            if(user1.getPassword().equals(user.getPassword())){
+                return user1;
+            }
+        }
+        return null;
+    }
 
 
     @GetMapping("/example")

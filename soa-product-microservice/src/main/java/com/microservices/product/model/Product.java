@@ -17,6 +17,7 @@ public class Product {
     private String description;
     private Double price;
     private String stock;
+    private String img;
 
     public Long getId() {
         return id;
@@ -58,6 +59,14 @@ public class Product {
         this.stock = stock;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -66,6 +75,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", stock='" + stock + '\'' +
+
                 '}';
     }
 }
