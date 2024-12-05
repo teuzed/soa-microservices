@@ -5,7 +5,12 @@ import com.microservices.user.services.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -17,8 +22,12 @@ public class UserController {
     private UserServiceImpl userService;
 
     @PostMapping("/save")
-    public User save(@RequestBody User user){
-        return userService.save(user);
+    public ResponseEntity<Map<String, String>> save(@RequestBody User user){
+        User savedUser = userService.save(user);
+        Map<String, String> response = new HashMap<>();
+        response.put("username", savedUser.getUsername());
+        response.put("name", savedUser.getName());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @GetMapping("/find/{id}")
@@ -49,14 +58,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody User user){
+    public ResponseEntity<Map<String, String>> login(@RequestBody User user){
         User user1 = userService.findByUsername(user.getUsername());
+        Map<String, String> response = new HashMap<>();
         if(user1 != null){
-            if(user1.getPassword().equals(user.getPassword())){
-                return user1;
-            }
+            response.put("message", "Login successful");
+            response.put("username", user1.getUsername());
+            response.put("name", user1.getName());
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            response.put("message", "Invalid credentials");
+            return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
-        return null;
     }
 
 
