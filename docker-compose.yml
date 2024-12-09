@@ -168,6 +168,8 @@ services:
       - soa-prometheus-microservice  
     environment:
       - SERVICE_SOA=soa-grafana-microservice
+    networks:
+      - soa-network
     volumes:
       - grafana_data:/var/lib/grafana 
     restart: always
