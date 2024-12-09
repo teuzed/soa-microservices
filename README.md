@@ -32,6 +32,13 @@ This guide provides step-by-step instructions to deploy and execute the SOA micr
 
 ---
 
+
+## Arquitecture - E-Commerce
+
+
+![Arquitecture Diagram](./asset/arquitecture.png)
+
+
 ## Prerequisites
 
 1. **Java Development Kit (JDK)**: Ensure JDK 17 is installed.
