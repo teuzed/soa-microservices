@@ -11,7 +11,7 @@ scrape_configs:
 
     static_configs:
       - targets: ["localhost:8081"]
-      
+
   # Configuración para el servicio "soa-order-microservice"
   - job_name: "soa-order-microservice"
     metrics_path: "/actuator/prometheus"
@@ -23,6 +23,11 @@ scrape_configs:
     metrics_path: "/actuator/prometheus"
     static_configs:
       - targets: ["localhost:8083"]
+  # Configuración para el servicio "soa-order-detail-microservice"
+  - job_name: "soa-order-detail-microservice"
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ["localhost:8084"]
 
   # Configuración para el servicio "soa-user-microservice"
   - job_name: "soa-user-microservice"
@@ -31,8 +36,3 @@ scrape_configs:
       - targets: ["localhost:8085"]
 
   
-  # Configuración para el servicio "soa-order-detail-microservice"
-  - job_name: "soa-order-detail-microservice"
-    metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["localhost:8084"]
