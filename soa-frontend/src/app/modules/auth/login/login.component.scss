@@ -1,0 +1,43 @@
+
+
+mat-card {
+  max-width: 600px;  /* Cambié el ancho máximo para tener más espacio */
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* Centrado del título */
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+ 
+.full-width {
+  width: 100%;
+}
+
+/* Espaciado entre los inputs */
+mat-form-field {
+  margin-bottom: 15px;
+}
+
+/* Estilo para el botón */
+button {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Responsivo: para que las columnas se acomoden en pantallas más pequeñas */
+@media screen and (max-width: 600px) {
+  mat-grid-list {
+    display: block;  /* Cambiamos a un layout de una sola columna en pantallas pequeñas */
+  }
+
+  mat-grid-tile {
+    margin-bottom: 20px; /* Agregamos un margen para que haya espacio entre los inputs */
+  }
+}

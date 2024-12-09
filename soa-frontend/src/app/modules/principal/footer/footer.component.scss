@@ -1,0 +1,8 @@
+.book-icon svg {
+  fill: #ffffff; /* Color inicial (negro) */
+  transition: fill 0.3s ease-in-out; /* Transición suave */
+}
+
+.book-icon:hover svg {
+  fill: #ffd000; /* Color al pasar el cursor (naranja) */
+}

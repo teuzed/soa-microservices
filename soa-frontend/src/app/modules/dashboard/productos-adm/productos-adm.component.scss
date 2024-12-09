@@ -1,0 +1,27 @@
+.formulario-nuevo-producto {
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}

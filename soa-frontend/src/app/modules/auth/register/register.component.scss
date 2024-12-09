@@ -1,0 +1,23 @@
+/* src/app/modules/auth/register/register.component.css */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-card {
+  width: 60%;
+  max-width: 600px;
+}
+
+.register-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 24px;
+}
