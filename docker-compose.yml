@@ -141,7 +141,41 @@ services:
       - EUREKA_SERVER_PORT=8761
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
-
+  
+  soa-prometheus-microservice:
+    image: prom/prometheus:latest
+    container_name: soa-prometheus-microservice
+    ports:
+      - "9090:9090"
+    networks:
+      - soa-network
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml  
+      - prometheus_data:/prometheus        
+    environment:
+      - SERVICE_SOA=soa-prometheus-microservice
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+      
+  soa-grafana-microservice:
+    image: grafana/grafana:latest
+    container_name: soa-grafana-microservice
+    ports:
+      - "3000:3000"
+    depends_on:
+      - soa-prometheus-microservice  
+    environment:
+      - SERVICE_SOA=soa-grafana-microservice
+    volumes:
+      - grafana_data:/var/lib/grafana 
+    restart: always
+  
 networks:
   soa-network:
     driver: bridge
+
+volumes:
+  prometheus_data:
+  grafana_data:
