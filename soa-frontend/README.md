@@ -23,7 +23,7 @@ Este proyecto es una aplicación frontend desarrollada con Angular para el curso
     ```
 3. Instala las dependencias:
     ```bash
-    npm install
+     npm install --legacy-peer-deps
     ```
 
 ## Ejecución
