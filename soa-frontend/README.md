@@ -8,7 +8,7 @@ Este proyecto es una aplicación frontend desarrollada con Angular para el curso
 
 ## Requisitos
 
-- Node.js
+- Node.js v22.10.0
 - Angular CLI
 
 ## Instalación
