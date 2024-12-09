@@ -15,11 +15,11 @@ Este proyecto es una aplicación frontend desarrollada con Angular para el curso
 
 1. Clona el repositorio:
     ```bash
-    git clone  https://github.com/rayitodospuntostres/soaaa.git
+    git clone  https://github.com/teuzed/soa-microservices.git
     ```
 2. Navega al directorio del proyecto:
     ```bash
-    cd soaaa
+    cd soa-frontend
     ```
 3. Instala las dependencias:
     ```bash
@@ -30,7 +30,7 @@ Este proyecto es una aplicación frontend desarrollada con Angular para el curso
 
 Para ejecutar la aplicación en modo de desarrollo, utiliza el siguiente comando:
 ```bash
-ng serve
+ng serve -o
 ```
 Luego, abre tu navegador y navega a `http://localhost:4200/`.
 
