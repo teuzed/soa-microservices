@@ -63,6 +63,7 @@ public class UserController {
         Map<String, String> response = new HashMap<>();
         if(user1 != null){
             response.put("message", "Login successful");
+            response.put("id", user1.getId_user().toString());
             response.put("username", user1.getUsername());
             response.put("name", user1.getName());
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -71,7 +72,6 @@ public class UserController {
             return new ResponseEntity<>(response, HttpStatus.UNAUTHORIZED);
         }
     }
-
 
     @GetMapping("/example")
     public String example(){

@@ -17,6 +17,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment save(Payment payment) {
+
         return repository.save(payment);
     }
 
@@ -35,9 +36,17 @@ public class PaymentServiceImpl implements PaymentService {
         }
     }
 
+
+
     @Override
     @Transactional(readOnly = true)
     public List<Payment> findAll() {
         return repository.findAll();
     }
+
+//    @Override
+//    @Transactional(readOnly = true)
+//    public Long getLastOrderNumber() {
+//        return repository.getLastOrderNumber();
+//    }
 }

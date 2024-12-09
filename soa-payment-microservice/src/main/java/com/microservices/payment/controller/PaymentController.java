@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/payment/")
+@RequestMapping("/api/v1/payment")
 public class PaymentController {
 
     @Autowired
@@ -40,5 +40,11 @@ public class PaymentController {
     public String example(){
         return "Payment Microservice is working";
     }
+
+
+//    @GetMapping("/last-oder-number")
+//    public Long getLastOrderNumber(){
+//        return paymentService.getLastOrderNumber();
+//    }
 
 }

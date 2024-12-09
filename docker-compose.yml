@@ -141,15 +141,6 @@ services:
       - EUREKA_SERVER_PORT=8761
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://soa-eureka-server:8761/eureka/
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
-  soa-frontend-microservice:
-    image: teuzed/soa-frontend:latest
-    container_name: soa-frontend-microservice
-    ports:
-      - "4200:4200"
-    networks:
-      - soa-network    
-    environment:
-      - SERVICE_SOA=soa-frontend-microservice   
 
 networks:
   soa-network:

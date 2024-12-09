@@ -12,4 +12,5 @@ public interface PaymentService {
     void deleteById(Long id);
 
     List<Payment> findAll();
+  //  Long getLastOrderNumber();
 }

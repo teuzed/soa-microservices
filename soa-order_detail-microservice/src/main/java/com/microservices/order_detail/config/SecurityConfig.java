@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -50,5 +53,34 @@ public class SecurityConfig {
                         .allowedMethods("*");
             }
         };
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+
+        // Permitir credenciales (cookies, autenticación)
+        config.setAllowCredentials(true);
+
+        // Especificar los orígenes permitidos (en este caso, tu front-end)
+        config.addAllowedOrigin("http://localhost:4200");  // Asegúrate de que coincida con el puerto de tu frontend
+
+        // Permitir ciertos encabezados
+        config.addAllowedHeader("Content-Type");
+        config.addAllowedHeader("Authorization");
+        config.addAllowedHeader("X-Requested-With");
+
+        // Permitir los métodos HTTP que la API acepta
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("DELETE");
+
+        // Registrar la configuración para todas las rutas
+        source.registerCorsConfiguration("/**", config);
+
+        return new CorsFilter(source);
     }
 }
