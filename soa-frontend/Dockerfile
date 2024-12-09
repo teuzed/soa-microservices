@@ -1,4 +1,4 @@
-# Etapa de Construcción
+
 FROM node:22.10.0-alpine AS builder
 
 WORKDIR /app
