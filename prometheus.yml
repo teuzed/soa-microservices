@@ -5,33 +5,34 @@ global:
   # scrape_timeout is set to the global default (10s).  
 
 scrape_configs:
-  # Configuración para el servicio "soa-product-microservice"
+
   - job_name: "soa-product-microservice"
     metrics_path: "/actuator/prometheus"
-    static_configs:
-      - targets: ["soa-product-microservice:8081"]
 
+    static_configs:
+      - targets: ["localhost:8081"]
+      
   # Configuración para el servicio "soa-order-microservice"
   - job_name: "soa-order-microservice"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["soa-order-microservice:8082"]
+      - targets: ["localhost:8082"]
 
   # Configuración para el servicio "soa-payment-microservice"
   - job_name: "soa-payment-microservice"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["soa-payment-microservice:8083"]
+      - targets: ["localhost:8083"]
 
   # Configuración para el servicio "soa-user-microservice"
   - job_name: "soa-user-microservice"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["soa-user-microservice:8085"]
+      - targets: ["localhost:8085"]
 
   
   # Configuración para el servicio "soa-order-detail-microservice"
   - job_name: "soa-order-detail-microservice"
     metrics_path: "/actuator/prometheus"
     static_configs:
-      - targets: ["soa-order-detail-microservice:8084"]
+      - targets: ["localhost:8084"]
